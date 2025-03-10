@@ -5,6 +5,12 @@
     <link rel="icon" type="image/svg+xml" href="/intelligent/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
+    <script>
+      if (location.pathname.startsWith('/intelligent') && !location.pathname.startsWith('/intelligent/')) {
+        location.replace('/intelligent' + location.pathname);
+      }
+    </script>
+    
     <script type="module" crossorigin src="/intelligent/assets/index-BKjhr7IY.js"></script>
     <link rel="stylesheet" crossorigin href="/intelligent/assets/index-Cchg9Jd_.css">
   </head>
