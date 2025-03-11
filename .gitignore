@@ -1,0 +1,21 @@
+# Ignore dataset folders
+datasets/
+data/
+images/
+raw_data/
+
+# Ignore image files
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+*.gif
+
+# Ignore temporary files
+__pycache__/
+*.log
+
+backend/*.keras
+backend/*.h5
+backend/*.pkl

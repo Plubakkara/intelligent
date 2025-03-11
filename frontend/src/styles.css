@@ -1,0 +1,383 @@
+/* ✅ ตั้งค่าทั่วไปของเว็บ */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* ✅ Navbar */
+nav {
+    background-color: #333;
+    padding: 15px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* ✅ คอนเทนเนอร์หลัก */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* ✅ หัวข้อ */
+h1 {
+    color: #007bff;
+}
+
+h2 {
+    color: #343a40;
+}
+
+/* ✅ รายการแบบลิสต์ */
+ul {
+    text-align: left;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* ✅ ฟอร์มป้อนข้อมูล */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* ✅ ปิดปุ่มเพิ่มลดของ input number */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ✅ ปุ่มกด */
+button {
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* ✅ กล่องข้อความแจ้งเตือน */
+.alert {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #dff0d8;
+    color: #3c763d;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* ✅ คอนเทนเนอร์ของ Dogs Vs Cats */
+.dogs-cats-container {
+    max-width: 600px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* ✅ หัวข้อ Dogs Vs Cats */
+.dogs-cats-container h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* ✅ ฟอร์ม */
+.dogs-cats-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ✅ ปุ่มอัปโหลดไฟล์ */
+.file-input {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    cursor: pointer;
+}
+
+/* ✅ ปุ่มพยากรณ์ */
+.dogs-cats-form button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+}
+
+.dogs-cats-form button:hover {
+    background-color: #0056b3;
+}
+
+/* ✅ ข้อความแจ้งผล */
+.prediction-result {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #28a745;
+}
+
+/* ✅ แสดงภาพที่อัปโหลด */
+.uploaded-image {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ คอนเทนเนอร์หลัก */
+.about-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* ✅ หัวข้อใหญ่ */
+.about-container h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* ✅ ส่วนหัวข้อย่อย */
+.about-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 20px;
+}
+
+/* ✅ ไอคอน */
+.about-container h2 span {
+    font-size: 28px;
+}
+
+/* ✅ เนื้อหา */
+.about-container p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin: 10px 0 20px;
+}
+
+/* ✅ รายการขั้นตอน */
+.steps {
+    text-align: left;
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+/* ✅ ไอคอนสำหรับหัวข้อ */
+.steps span {
+    font-size: 22px;
+    margin-right: 8px;
+    color: #6c757d;
+}
+
+/* ✅ ปรับแต่งลิสต์ */
+.steps ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.steps ul li {
+    font-size: 16px;
+    color: #444;
+    margin: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+/* ✅ เพิ่มไอคอนให้แต่ละรายการ */
+.steps ul li::before {
+    content: "✔"; 
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* ✅ คอนเทนเนอร์หลัก */
+.about-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* ✅ หัวข้อหลัก */
+.about-container h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* ✅ กล่องข้อมูลแต่ละส่วน */
+.model-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* ✅ หัวข้อย่อย */
+.model-section h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* ✅ รายการข้อมูล */
+.model-section ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.model-section ul li {
+    margin-bottom: 8px;
+}
+
+/* ✅ สรุป */
+.summary {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    padding: 20px;
+    background: #e9ecef;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* ✅ คอนเทนเนอร์หลัก */
+.home-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* ✅ หัวข้อหลัก */
+.home-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* ✅ คำอธิบาย */
+.home-container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* ✅ ส่วนของฟีเจอร์ */
+.feature-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* ✅ หัวข้อย่อย */
+.feature-section h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* ✅ ปุ่มนำทาง */
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
