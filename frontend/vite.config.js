@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/intelligent/",  // ✅ เปลี่ยนเป็นชื่อ repository ของคุณ
+  base: "/intelligent/",  // ✅ ต้องตรงกับ GitHub Repository
   build: {
     outDir: "dist"
   }
