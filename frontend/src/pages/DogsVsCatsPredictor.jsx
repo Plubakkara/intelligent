@@ -8,11 +8,8 @@ export default function DogsVsCatsPredictor() {
   const [preview, setPreview] = useState(null);
   const [error, setError] = useState(null);
 
-  // ✅ ปรับให้รองรับ Localhost, Local IP และ Production
-  const API_BASE_URL =
-    window.location.hostname === "plubakkara.github.io"
-      ? "https://your-backend-deployment.com"  // ✅ เปลี่ยน URL เมื่อ Deploy Backend จริง
-      : "http://localhost:5000";  // ✅ รองรับทั้ง Localhost และ IP เครื่อง
+  // ✅ กำหนดให้ใช้ Localhost เท่านั้น
+  const API_BASE_URL = "http://localhost:5000"; 
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];

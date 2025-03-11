@@ -12,11 +12,8 @@ export default function HousePricePredictor() {
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
 
-  // ✅ กำหนด API URL ให้รองรับทุกกรณี
-  const API_BASE_URL =
-    window.location.hostname === "plubakkara.github.io"
-      ? "https://your-backend-deployment.com" // เปลี่ยน URL เมื่อ Deploy Backend
-      : "http://localhost:5000"; // ✅ รองรับทั้ง Localhost และ IP เครื่อง
+  // ✅ กำหนดให้ใช้ API จาก Localhost เท่านั้น
+  const API_BASE_URL = "http://localhost:5000"; 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
