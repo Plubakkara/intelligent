@@ -13,7 +13,7 @@ export default function HousePricePredictor() {
   const [error, setError] = useState(null);
 
   // ✅ กำหนดให้ใช้ API จาก Localhost เท่านั้น
-  const API_BASE_URL = "https://e94c-34-75-110-13.ngrok-free.app"; 
+  const API_BASE_URL = "https://506a-35-185-19-211.ngrok-free.app"; 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
