@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import "../styles.css"; // ✅ ใช้สไตล์จาก styles.css
+import "../styles.css"; 
 
 export default function HousePricePredictor() {
   const [formData, setFormData] = useState({
@@ -12,6 +12,12 @@ export default function HousePricePredictor() {
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
 
+  // ✅ กำหนด API URL ให้รองรับทุกกรณี
+  const API_BASE_URL =
+    window.location.hostname === "plubakkara.github.io"
+      ? "https://your-backend-deployment.com" // เปลี่ยน URL เมื่อ Deploy Backend
+      : "http://localhost:5000"; // ✅ รองรับทั้ง Localhost และ IP เครื่อง
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -21,15 +27,9 @@ export default function HousePricePredictor() {
     setError(null);
     setPrediction(null);
 
-    const areaValue = parseFloat(formData.area);
-    if (!areaValue || isNaN(areaValue) || areaValue <= 0) {
-      setError("Please enter a valid area in square meters.");
-      return;
-    }
-
     try {
-      const requestData = { ...formData, area: areaValue };
-      const response = await axios.post("http://192.168.2.60:5000/predict-house", requestData);
+      const requestData = { ...formData, area: parseFloat(formData.area) };
+      const response = await axios.post(`${API_BASE_URL}/predict-house`, requestData);
       setPrediction(response.data.price);
     } catch (error) {
       setError("Prediction failed. Please try again.");
@@ -38,57 +38,19 @@ export default function HousePricePredictor() {
   };
 
   return (
-    <div className="dogs-cats-container house-price-container"> {/* ✅ ใช้กรอบเดียวกับ DogsVsCatsPredictor */}
+    <div className="dogs-cats-container house-price-container">
       <h1>🏡 House Price Predictor</h1>
-      <form onSubmit={handleSubmit} className="dogs-cats-form"> {/* ✅ ใช้ฟอร์มเดียวกัน */}
-        <input
-          name="area"
-          value={formData.area}
-          onChange={handleChange}
-          placeholder="Area (sq.m)"
-          type="number"
-          className="file-input"
-          min="1"
-          required
-        />
-        <input
-          name="bedrooms"
-          value={formData.bedrooms}
-          onChange={handleChange}
-          placeholder="Bedrooms"
-          type="number"
-          className="file-input"
-          min="1"
-          required
-        />
-        <input
-          name="bathrooms"
-          value={formData.bathrooms}
-          onChange={handleChange}
-          placeholder="Bathrooms"
-          type="number"
-          className="file-input"
-          min="1"
-          required
-        />
-        <input
-          name="stories"
-          value={formData.stories}
-          onChange={handleChange}
-          placeholder="Stories"
-          type="number"
-          className="file-input"
-          min="1"
-          required
-        />
+      <form onSubmit={handleSubmit} className="dogs-cats-form">
+        <input name="area" value={formData.area} onChange={handleChange} placeholder="Area (sq.m)" type="number" required />
+        <input name="bedrooms" value={formData.bedrooms} onChange={handleChange} placeholder="Bedrooms" type="number" required />
+        <input name="bathrooms" value={formData.bathrooms} onChange={handleChange} placeholder="Bathrooms" type="number" required />
+        <input name="stories" value={formData.stories} onChange={handleChange} placeholder="Stories" type="number" required />
         <button type="submit">Predict</button>
       </form>
 
       {error && <p className="alert-error">{error}</p>}
       {prediction !== null && (
-        <p className="prediction-result">
-          Predicted Price: {prediction.toLocaleString()} THB
-        </p>
+        <p className="prediction-result">Predicted Price: {prediction.toLocaleString()} THB</p>
       )}
     </div>
   );

@@ -8,11 +8,17 @@ export default function DogsVsCatsPredictor() {
   const [preview, setPreview] = useState(null);
   const [error, setError] = useState(null);
 
+  // ✅ ปรับให้รองรับ Localhost, Local IP และ Production
+  const API_BASE_URL =
+    window.location.hostname === "plubakkara.github.io"
+      ? "https://your-backend-deployment.com"  // ✅ เปลี่ยน URL เมื่อ Deploy Backend จริง
+      : "http://localhost:5000";  // ✅ รองรับทั้ง Localhost และ IP เครื่อง
+
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
-      setPreview(URL.createObjectURL(selectedFile)); // ✅ แสดงตัวอย่างรูปภาพ
+      setPreview(URL.createObjectURL(selectedFile));
       setPrediction(null);
       setError(null);
     }
@@ -29,7 +35,7 @@ export default function DogsVsCatsPredictor() {
     formData.append("file", file);
 
     try {
-      const response = await axios.post("http://192.168.2.60:5000/predict-dogs-vs-cats", formData, {
+      const response = await axios.post(`${API_BASE_URL}/predict-dogs-vs-cats`, formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
       setPrediction(response.data.prediction);
