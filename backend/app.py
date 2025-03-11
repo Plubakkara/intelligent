@@ -9,11 +9,13 @@ import gdown
 import logging
 
 # ✅ ตั้งค่า Logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["http://localhost:5173"]}})
+
+# ✅ เปิดใช้งาน CORS (รองรับทั้ง Local และ GitHub Pages)
+CORS(app, resources={r"/*": {"origins": ["http://localhost:5174", "https://plubakkara.github.io"]}})
 
 logger.info("🚀 Flask Server is starting...")
 
@@ -34,11 +36,8 @@ def download_model(url, output_path):
         logger.info(f"✅ {output_path} already exists, skipping download.")
 
 # ✅ ดาวน์โหลดโมเดล (ถ้ายังไม่มี)
-if not os.path.exists(house_price_model_path):
-    download_model(HOUSE_PRICE_MODEL_URL, house_price_model_path)
-
-if not os.path.exists(dogs_cats_model_path):
-    download_model(DOGS_CATS_MODEL_URL, dogs_cats_model_path)
+download_model(HOUSE_PRICE_MODEL_URL, house_price_model_path)
+download_model(DOGS_CATS_MODEL_URL, dogs_cats_model_path)
 
 # 📌 โหลดโมเดล
 try:
@@ -87,22 +86,32 @@ def predict_dogs_vs_cats():
         if dogs_cats_model is None:
             return jsonify({"error": "Dogs vs Cats Model not loaded"}), 500
 
+        # ✅ ตรวจสอบว่ามีไฟล์ถูกส่งมาหรือไม่
+        if "file" not in request.files:
+            return jsonify({"error": "No file uploaded"}), 400
+
         file = request.files['file']
         upload_dir = 'uploads/'
-        if not os.path.exists(upload_dir):
-            os.makedirs(upload_dir)
-        
+
+        # ✅ สร้างโฟลเดอร์หากยังไม่มี
+        os.makedirs(upload_dir, exist_ok=True)
+
+        # ✅ บันทึกไฟล์ภาพ
         filepath = os.path.join(upload_dir, file.filename)
         file.save(filepath)
 
+        # ✅ โหลดและแปลงภาพเป็น Array
         img = image.load_img(filepath, target_size=(150, 150))
         img_array = image.img_to_array(img) / 255.0
         img_array = np.expand_dims(img_array, axis=0)
 
+        # ✅ ทำนายผล
         prediction = dogs_cats_model.predict(img_array)
         result = 'dog 🐶' if prediction[0][0] > 0.5 else 'cat 🐱'
 
-        os.remove(filepath)  # ✅ ลบไฟล์หลังใช้
+        # ✅ ลบไฟล์ภาพหลังจากใช้งาน
+        os.remove(filepath)
+        
         logger.info("🐶🐱 Prediction Result: %s", result)
         return jsonify({'prediction': result})
 
@@ -110,5 +119,6 @@ def predict_dogs_vs_cats():
         logger.error("🐶🐱❌ Error:", exc_info=True)
         return jsonify({'error': str(e)}), 500
 
+# ✅ รัน Flask Server
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)

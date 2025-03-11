@@ -1,0 +1,4 @@
+git add .
+git commit -m "Deploy updated frontend with improved API handling"
+git push origin main
+npm run deploy
