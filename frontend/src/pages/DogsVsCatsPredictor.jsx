@@ -9,7 +9,7 @@ export default function DogsVsCatsPredictor() {
   const [error, setError] = useState(null);
 
   // ✅ กำหนดให้ใช้ Localhost เท่านั้น
-  const API_BASE_URL = "https://506a-35-185-19-211.ngrok-free.app"; 
+  const API_BASE_URL = "https://2d71-35-229-61-63.ngrok-free.app"; 
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
